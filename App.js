@@ -7,9 +7,8 @@ import Products from './src/screens/Products';
 export default function App() {
   return (
     <View style={styles.container}>
-      {/* <Home/> */}
-      {/* <Search/> */}
-      <Products category="smartphones"/>
+      
+      <Products category="laptops"/>
     </View>
   );
 }

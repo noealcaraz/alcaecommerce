@@ -3,18 +3,21 @@ import React, { useState } from 'react';
 import { colors } from '../theme/colors';
 import { AntDesign } from '@expo/vector-icons';
 
-const Search = () => {
-    const [text, setText] = useState("");
+const Search = ({ text, setText }) => {
+    
+  const clearText = () => {
+    setText(null);
+  };
 
   return (
     <View style={styles.container}>
       <TextInput 
-      
+        onChangeText={(value) => setText(value)}
         style={styles.input}
       placeholder= "Buscar producto"
       value={text}
       />
-      <Pressable onPress={() => console.log("boton presionado")}>
+      <Pressable onPress={() => clearText()}>
       <AntDesign name="close" size={33} color="black" />
       </Pressable>
     </View>
@@ -38,7 +41,7 @@ const styles = StyleSheet.create({
         padding: 10,
         fontSize: 20,
         marginRight: 15,
-
+        backgroundColor: colors.lightColor,
     },
 });
 

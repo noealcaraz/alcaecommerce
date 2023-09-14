@@ -6,7 +6,6 @@ import { products } from '../data/products';
 const ProductItem = ({ item }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}> {item.title} </Text>
       <Image 
     source={{uri: item.images[0] }}
     height={80}
@@ -14,6 +13,8 @@ const ProductItem = ({ item }) => {
     style={styles.image}
     
     />
+      <Text style={styles.text}> {item.title} </Text>
+      
     </View>
   );
 };
@@ -34,13 +35,13 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 20,
         fontWeight: "600",
-        marginLeft: 20,
+        marginRight: 20,
 
     },
 
     image: {
-        marginRight: 10,
+        marginLeft: 10,
     }
 })
 
-export default ProductItem
+export default ProductItem; 
