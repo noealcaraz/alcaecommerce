@@ -1,20 +1,23 @@
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet, Image, Pressable } from 'react-native'
 import React from 'react'
 import { colors } from '../theme/colors';
 import { products } from '../data/products';
+import { useWindowDimensions } from 'react-native';
 
-const ProductItem = ({ item }) => {
+const ProductItem = ({ item, navigation }) => {
+  const { height, width } = useWindowDimensions();
+
   return (
     <View style={styles.container}>
       <Image 
-    source={{uri: item.images[0] }}
-    height={80}
-    width={80}
-    style={styles.image}
-    
-    />
+        source={{uri: item.images[0] }}
+        height={80}
+        width={80}
+        style={styles.image}
+      />
+    <Pressable onPress={() => navigation.navigate("productDetail")}>
       <Text style={styles.text}> {item.title} </Text>
-      
+    </Pressable>  
     </View>
   );
 };
