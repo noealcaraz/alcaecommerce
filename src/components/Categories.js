@@ -10,7 +10,7 @@ const Categories = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: colors.heavyColor,
+        backgroundColor: colors.white,
         paddingTop: 20,
     }
 })

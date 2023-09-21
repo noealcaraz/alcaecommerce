@@ -1,19 +1,19 @@
-import { View, Text, StyleSheet, Pressable } from 'react-native'
+import { View, Text, StyleSheet, Pressable, SafeAreaView } from 'react-native'
 import React from 'react'
 import { colors } from '../theme/colors';
 
 const Header = ({ title, navigation }) => {
   return (
-    <View style={styles.container} >
+    <SafeAreaView style={styles.container} >
       
       <Text style={styles.headerTitle}> {title} </Text>
-    </View>
+    </SafeAreaView>
   )
 };
 
 const styles = StyleSheet.create({
     container: {
-        height: 120,
+        height: 100,
         width: "100%",
         alignItems: "center",
         justifyContent: "center",
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
         fontWeight: "600",
         fontSize: 25,
         color: colors.heavyColor,
-        fontFamily: "Montserrat",
+        fontFamily: "Cantarell",
         
     }
 })

@@ -4,7 +4,7 @@ import { colors } from '../theme/colors'
 
 const CategoryItem = ({ item, navigation }) => {
   return (
-    <Pressable onPress={() => navigation.navigate('products', { item: item })}>
+    <Pressable onPress={() => navigation.navigate('products', { item: item })} style={styles.categoryButton}>
       <Text style={styles.categoryText}>{item}</Text>
     </Pressable>
   );
@@ -17,13 +17,18 @@ const styles = StyleSheet.create({
         color: colors.mediumColor,
         alignItems: "center",
         justifyContent: "center",
-        width: "100%",
+        
 
         borderColor: colors.lightColor,
         borderWidth: 1,
         borderRadius: 15,
         textAlign: "center",
-        padding: 8,
+        padding: 10,
+    },
+
+    categoryButton: {
+      width: "50%",
+      marginLeft: 110,
     }
 })
 export default CategoryItem

@@ -10,7 +10,8 @@ import RootNavigation from './src/navigation/RootNavigation';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    Montserrat: require("./assets/MontserratAlternates-BlackItalic.ttf"),
+    Montserrat: require("./assets/fonts/MontserratAlternates-BlackItalic.ttf"),
+    Cantarell: require('./assets/fonts/Cantarell-Regular.ttf'),
   });
 
   if (fontsLoaded === false) {
