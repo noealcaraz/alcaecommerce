@@ -2,12 +2,18 @@ import { SafeAreaView, Text, FlatList, StyleSheet, View  } from 'react-native'
 import React from 'react'
 import Header from '../components/Header'
 import Categories from '../components/Categories'
-import { categorias } from '../data/categorias'
+
 import CategoryItem from '../components/CategoryItem'
 import { colors } from '../theme/colors'
+import { useSelector } from 'react-redux'
 
 
 const Home = ({ navigation }) => {
+
+  const categorias = useSelector((state) => state.homeSlice.allCategories);
+
+  // console.log("CATEGORIES FROM STORE", categorias)
+
   return (
     <SafeAreaView>
       <Header title="Productos" navigation={navigation} />

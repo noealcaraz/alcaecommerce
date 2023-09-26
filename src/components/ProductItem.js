@@ -6,6 +6,12 @@ import { useWindowDimensions } from 'react-native';
 
 const ProductItem = ({ item, navigation }) => {
   const { height, width } = useWindowDimensions();
+  const dispatch = useDispatch();
+
+  const handleProductSelect = () => {
+    dispatch(setProductSelected(item.title));
+    navigation.navigate("productDetail");
+  };
 
   return (
     <View style={styles.container}>
@@ -15,7 +21,7 @@ const ProductItem = ({ item, navigation }) => {
         width={80}
         style={styles.image}
       />
-    <Pressable onPress={() => navigation.navigate("productDetail")}>
+    <Pressable onPress={handleProductSelect()}>
       <Text style={styles.text}> {item.title} </Text>
     </Pressable>  
     </View>
