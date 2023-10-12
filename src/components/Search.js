@@ -13,7 +13,7 @@ const Search = ({ text, setText }) => {
     <View style={styles.container}>
       <TextInput 
         onChangeText={(value) => setText(value)}
-        style={styles.input}
+        style={styles.inpot}
       placeholder= "Buscar producto"
       value={text}
       />
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         
     },
 
-    input: {
+    inpot: {
         width: "78%",
         borderWidth: 1,
         borderRadius: 8, 

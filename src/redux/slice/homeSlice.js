@@ -24,7 +24,7 @@ const homeSlice = createSlice({
         },
 
         setProductSelected: (state, action) => {
-            state.setProductSelected = action.payload;
+            state.productSelected = action.payload;
         },
 
     },

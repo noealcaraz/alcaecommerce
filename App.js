@@ -8,6 +8,10 @@ import TabNav from './src/navigation/TabNav';
 
 import { Provider } from 'react-redux';
 import { store } from './src/redux/store';
+import AuthNav from './src/navigation/AuthNav';
+import Register from './src/screens/Register';
+import Login from './src/screens/Login';
+import MainNav from './src/navigation/MainNav'
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -21,13 +25,9 @@ export default function App() {
   
   return (
     <Provider store={store}>
-      <NavigationContainer>
-       <TabNav />
-      </NavigationContainer>
+       <MainNav/>
     </Provider>
   );
 }
 
-const styles = StyleSheet.create({
- 
-});
+const styles = StyleSheet.create({});

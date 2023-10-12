@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, Image, Pressable } from 'react-native'
 import React from 'react'
 import { colors } from '../theme/colors';
 import { products } from '../data/products';
-import { useWindowDimensions } from 'react-native';
+import { useWindowDimensions, useDispatch } from 'react-native';
 
 const ProductItem = ({ item, navigation }) => {
   const { height, width } = useWindowDimensions();
