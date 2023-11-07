@@ -5,7 +5,7 @@
 # Temas Aplicados:
 
 - Expo y React Native
-Se creó utilizando Expo y React Native, lo que permite el desarrollo de aplicaciones multiplataforma de manera eficiete.
+Se creó utilizando Expo y React Native, lo que permite el desarrollo de aplicaciones multiplataforma de manera eficiente.
 
 - Hooks
 Se aplicaron los conceptos de React Hooks, como `useState`, `useEffect`, etc., para administrar el estado y el ciclo de vida de los componentes.
@@ -17,7 +17,7 @@ Para un mejor manejo del estado de la aplicación, se utilizó Redux Toolkit. Es
 Permite a los usuarios acceder a la cámara de su dispositivo y a la galería de fotos para tomar y cargar las imágenes que desean.
 
 - Autenticación con Firebase
-La autenticación de usuarios se implementó utilizando Firebase, servicio que brinda Google. Los usuarios pueden registrarse e iniciar sesión de manera segura en la aplicación. 
+La autenticación de usuarios se implementó utilizando Firebase, servicio que brinda Google. Los usuarios pueden registrarse e iniciar sesión de manera segura en la aplicación.
 
 - Optimización de Código
 Se aplicaron buenas prácticas de programación y se optimizó el código para garantizar un rendimiento eficiente y una mejor legibilidad.
