@@ -16,7 +16,7 @@ Para un mejor manejo del estado de la aplicación, se utilizó Redux Toolkit. Es
 - Acceso a Cámara y Galería de Fotos
 Permite a los usuarios acceder a la cámara de su dispositivo y a la galería de fotos para tomar y cargar las imágenes que desean.
 
-- Autenticación con Firebase
+- Autenticación con Firebase (Integración API, CRUD)
 La autenticación de usuarios se implementó utilizando Firebase, servicio que brinda Google. Los usuarios pueden registrarse e iniciar sesión de manera segura en la aplicación.
 
 - Optimización de Código
