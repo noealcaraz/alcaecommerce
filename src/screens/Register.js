@@ -29,6 +29,7 @@ const Register = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Image source={eatpet} style={styles.logo} />
+      <Text style={styles.titleRegistro}>Registro</Text>
       <Text style={styles.title}>Completa tu email y elegí tu contraseña</Text>
       <TextInput 
         placeholder='Escriba su email aquí'
@@ -47,7 +48,7 @@ const Register = ({ navigation }) => {
       <TouchableOpacity style={styles.button} onPress={() => handleRegister()}>
         <Text style ={styles.buttonText}>Registrarse</Text>
       </TouchableOpacity>
-      <Text style={styles.registroText}>Ya tienes cuenta?</Text>
+      <Text style={styles.registroText}>¿Ya tienes cuenta?</Text>
       <Pressable onPress={() => navigation.navigate("login")}>
           <Text style={styles.sesion}>Inicia Sesión</Text>
       </Pressable>
@@ -66,10 +67,16 @@ const styles = StyleSheet.create({
       height: 250, 
       marginBottom: 20,
     },
-    title: {
-      fontSize: 24,
+    titleRegistro: {
+      fontSize: 30,
+      fontWeight: "bold",
       marginBottom: 20,
       color: colors.heavyColor,
+    },
+    title: {
+      fontSize: 22,
+      marginBottom: 20,
+      color: colors.mediumColor,
     },
     input: {
       width: "85%",
@@ -98,6 +105,7 @@ const styles = StyleSheet.create({
       fontSize: 18,
       color: colors.heavyColor,
     },
+    
     sesion: {
       marginTop: 0.5,
       fontSize: 25,

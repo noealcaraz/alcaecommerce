@@ -34,8 +34,9 @@ const Login = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Image source={eatpet} style={styles.logo} />
-      <Text style={styles.title}>Para acceder a comprar</Text>
+      <Text style={styles.titleComprar}>¡Bienvenido a nuestra tienda!</Text>
       <Text style={styles.title}>Inicia sesión</Text>
+      
       <TextInput
         placeholder = "Nombre de usuario"
         style = {styles.input}
@@ -72,10 +73,15 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     title: {
-        fontSize: 24,
+        fontSize: 30,
         marginBottom: 20,
         fontWeight: "bold",
         color: colors.heavyColor,
+    },
+    titleComprar: {
+      fontSize: 22,
+      marginBottom: 20,
+      color: colors.mediumColor,
     },
     input: {
         width: "85%",
