@@ -1,11 +1,11 @@
 # EatPet - Aplicación de Ecommerce para Alimentos de Mascotas
 
-"EatPet", es una app diseñada para la venta de alimentos para mascotas. Fue desarrollado en el curso de Desarrollo de Aplicaciones en Coderhouse y se aplicaron temas clave en el desarrollo de aplicaciones para celulares.
+"EatPet", es una app diseñada para la venta de alimentos para mascotas. Fue desarrollada en el curso de Desarrollo de Aplicaciones en Coderhouse y se aplicaron temas clave en el desarrollo de aplicaciones para celulares.
 
 # Temas Aplicados:
 
 - Expo y React Native
-Se creó utilizando Expo y React Native, lo que permite el desarrollo de aplicaciones multiplataforma de manera eficiete.
+Se creó utilizando Expo y React Native, lo que permite el desarrollo de aplicaciones multiplataforma de manera eficiente.
 
 - Hooks
 Se aplicaron los conceptos de React Hooks, como `useState`, `useEffect`, etc., para administrar el estado y el ciclo de vida de los componentes.
