@@ -6,7 +6,6 @@ import { AntDesign } from '@expo/vector-icons';
 const Search = ({ text, setText }) => {
     
   const clearText = () => {
-    console.log("textoo", value)
     setText(null);
   };
 
@@ -15,7 +14,7 @@ const Search = ({ text, setText }) => {
       <TextInput 
         onChangeText={(value) => setText(value)}
         style={styles.inpot}
-        placeholder= "Buscar alimento"
+        placeholder= "Buscar por marca"
         value={text}
       />
       <Pressable onPress={() => clearText()}>

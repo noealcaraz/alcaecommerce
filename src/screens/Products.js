@@ -17,7 +17,8 @@ const Products = ({ route, navigation }) => {
 
   const { data, isLoading, isError } = useGetProductsQuery();
 
-  console.log("Productos cargados:", data);
+  //console.log("productos cargados:", data);
+  
 
   const productsFilterByCategory = useSelector(
     (state) => state.homeSlice.productsFilterByCategory
@@ -30,9 +31,9 @@ const Products = ({ route, navigation }) => {
       
       if (text) {
         const titleProduct = products.filter(
-          (el) => el.title.toLowerCase() === text.toLowerCase()
+          (el) => el.title.toLowerCase().includes(text.toLowerCase())
         );
-        console.log("Productos filtrados:", titleProduct);
+        //console.log("productos filtrados:", titleProduct);
         setCategoryProd(titleProduct);
       }
     }, [text, item]); 
@@ -47,7 +48,7 @@ const Products = ({ route, navigation }) => {
         
         <FlatList
           data={categoryProd}
-          keyExtractor={products.id}
+          keyExtractor={(item) => item.id}
           renderItem={({item}) => (
             <ProductItem navigation={navigation} item={item} />
           )}

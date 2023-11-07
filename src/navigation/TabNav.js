@@ -16,10 +16,10 @@ const TabNav = () => {
   return (
     <Tab.Navigator screenOptions={{title: "", headerShown: false}}>
         <Tab.Screen 
-        options={{ tabBarIcon: ( {focused} ) => ( <Entypo name="home" size={24} color= { focused ? colors.mediumColor : "black"} />)}}
+        options={{ tabBarIcon: ( {focused} ) => ( <Entypo name="home" size={30} color= { focused ? colors.mediumColor : colors.heavyColor} />)}}
         name = "rootNavigation" component={RootNavigation} />
         <Tab.Screen 
-        options={{ tabBarIcon: ( {focused} ) => ( <Ionicons name="person-outline" size={24} color= { focused ? colors.mediumColor : "black"} />)}}
+        options={{ tabBarIcon: ( {focused} ) => ( <Ionicons name="person-outline" size={30} color= { focused ? colors.mediumColor : colors.heavyColor} />)}}
         name = "profile" component={Profile} />
 
     </Tab.Navigator>

@@ -14,14 +14,14 @@ const Login = ({ navigation }) => {
     const [password, setPassword] = useState("");
 
     const handleLogin = async () => {
-        console.log("intentando iniciar sesión");
+        //console.log("intentando iniciar sesión");
         try {
             const response = await signInWithEmailAndPassword(
                 firebase_auth,
                 email,
                 password, 
             );
-            console.log("inicio sesión ok", response); 
+            //console.log("inicio sesión ok", response); 
             AsyncStorage.setItem("userEmail", response.user.email);
             dispatch(setUser(response.user.email));
             dispatch(setIdToken(response._tokenResponse.idToken));
@@ -52,7 +52,7 @@ const Login = ({ navigation }) => {
       <TouchableOpacity style = {styles.button} onPress={handleLogin}>
         <Text style = {styles.buttonText}>Iniciar Sesión</Text>
       </TouchableOpacity>
-      <Text style ={styles.registroText}>No tienes cuenta?</Text>
+      <Text style ={styles.registroText}>¿No tienes cuenta?</Text>
       <Pressable onPress={() => navigation.navigate("register")}>
         <Text style ={styles.registro}>¡Registrate!</Text>
       </Pressable>
