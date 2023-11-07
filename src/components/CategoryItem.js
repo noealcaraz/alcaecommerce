@@ -3,44 +3,48 @@ import React from 'react'
 import { colors } from '../theme/colors'
 import { setCategory } from '../redux/slice/homeSlice';
 import { useDispatch } from 'react-redux';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
+
+const categoryImages = {
+  "Perros": <FontAwesome5 name="dog" size={70} color="#6568A8" />,
+  "Gatos": <FontAwesome5 name="cat" size={70} color="#6568A8" />,
+  "Otras": <Entypo name="baidu" size={70} color="#6568A8" />,
+};
 
 const CategoryItem = ({ item, navigation }) => {
-  // item es la categoria presionada
-
+  
   const dispatch = useDispatch();
 
-  const onHandleItem = () =>{
+  const onHandleItem = () => {
     dispatch(setCategory(item));
-    navigation.navigate("products", { item : item });
+    navigation.navigate("products", { item: item });
   };
-
 
   return (
     <Pressable onPress={() => onHandleItem()} style={styles.categoryButton}>
-      <Text style={styles.categoryText}>{item}</Text>
+      <View style={styles.iconContainer}>{categoryImages[item]}</View>
     </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
-    categoryText: {
-        fontSize: 20,
-        margin: 5,
-        color: colors.mediumColor,
-        alignItems: "center",
-        justifyContent: "center",
-        
+  iconContainer: {
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 
-        borderColor: colors.lightColor,
-        borderWidth: 1,
-        borderRadius: 15,
-        textAlign: "center",
-        padding: 10,
-    },
-
-    categoryButton: {
-      width: "50%",
-      marginLeft: 110,
-    }
+  categoryButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 50,
+    borderColor: colors.mediumColor,
+    borderWidth: 7,
+    borderRadius: 100,
+    height: 150, 
+    width: "75%", 
+  },
 })
-export default CategoryItem
+export default CategoryItem; 

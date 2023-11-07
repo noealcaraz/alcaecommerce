@@ -6,6 +6,7 @@ import { AntDesign } from '@expo/vector-icons';
 const Search = ({ text, setText }) => {
     
   const clearText = () => {
+    console.log("textoo", value)
     setText(null);
   };
 
@@ -14,11 +15,11 @@ const Search = ({ text, setText }) => {
       <TextInput 
         onChangeText={(value) => setText(value)}
         style={styles.inpot}
-      placeholder= "Buscar producto"
-      value={text}
+        placeholder= "Buscar alimento"
+        value={text}
       />
       <Pressable onPress={() => clearText()}>
-      <AntDesign name="close" size={33} color="black" />
+        <AntDesign name="close" size={33} color="#6568A8" />
       </Pressable>
     </View>
   );
@@ -38,11 +39,12 @@ const styles = StyleSheet.create({
         width: "78%",
         borderWidth: 1,
         borderRadius: 8, 
+        borderColor: colors.mediumColor,
         padding: 10,
         fontSize: 20,
         marginRight: 15,
-        backgroundColor: colors.lightColor,
+        backgroundColor: colors.white,
     },
 });
 
-export default Search
+export default Search;

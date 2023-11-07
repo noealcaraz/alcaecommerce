@@ -1,29 +1,33 @@
 import { View, Text, StyleSheet, Image, Pressable } from 'react-native'
 import React from 'react'
 import { colors } from '../theme/colors';
-import { products } from '../data/products';
-import { useWindowDimensions, useDispatch } from 'react-native';
+import { useWindowDimensions } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { setProductSelected } from '../redux/slice/homeSlice';
 
 const ProductItem = ({ item, navigation }) => {
-  const { height, width } = useWindowDimensions();
+  const { width } = useWindowDimensions();
   const dispatch = useDispatch();
 
-  const handleProductSelect = () => {
-    dispatch(setProductSelected(item.title));
+  const onHandleProductDetail = () => {
+    dispatch(setProductSelected(item));
     navigation.navigate("productDetail");
   };
 
   return (
     <View style={styles.container}>
+      <Pressable onPress={() => onHandleProductDetail()} style={styles.touchable}>
+        <Text style={width < 300 ? styles.textMin : styles.text}> 
+          {item.title} 
+        </Text>
+      </Pressable>  
       <Image 
         source={{uri: item.images[0] }}
         height={80}
         width={80}
         style={styles.image}
       />
-    <Pressable onPress={handleProductSelect()}>
-      <Text style={styles.text}> {item.title} </Text>
-    </Pressable>  
+    
     </View>
   );
 };
@@ -32,25 +36,35 @@ const styles = StyleSheet.create({
     container: {
         marginHorizontal: 20,
         marginVertical: 10,
-        borderColor: colors.white,
+        borderColor: colors.mediumColor,
         borderRadius: 10,
         borderWidth: 1,
-        height: 100,
-        justifyContent: "space-between",
         flexDirection: "row",
         alignItems: "center",
+    },
+
+    touchable: {
+      flex: 1,
     },
 
     text: {
         fontSize: 20,
         fontWeight: "600",
-        marginRight: 20,
+        marginLeft: 20,
 
     },
 
+    textMin: {
+      fontSize: 10,
+      fontWeight: "900",
+    },
+
     image: {
-        marginLeft: 10,
-    }
+      height: 100,
+      width: 100,
+      marginLeft: 10,
+      borderRadius: 10,
+    },
 })
 
 export default ProductItem; 

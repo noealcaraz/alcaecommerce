@@ -6,31 +6,34 @@ import ProductItem from '../components/ProductItem'
 import { AntDesign } from '@expo/vector-icons';
 import { useSelector } from 'react-redux'
 
-const Products = ({ category, route, navigation}) => {
+import { useGetProductsQuery } from "../services/ecApi";
+
+const Products = ({ route, navigation }) => {
     const [categoryProd, setCategoryProd] = useState([]);
     const [text, setText] = useState(null);
     const { item } = route.params;
   
   const products = useSelector((state) => state.homeSlice.allProducts);
 
-  const productsFilterByCategory = useSelector((state) => state.homeSlice.productsFilterByCategory);
+  const { data, isLoading, isError } = useGetProductsQuery();
 
-  console.log(productsFilterByCategory)
+  console.log("Productos cargados:", data);
 
-  // console.log("productos", JSON.stringify(products, null, " "));
+  const productsFilterByCategory = useSelector(
+    (state) => state.homeSlice.productsFilterByCategory
+  );
 
-    //console.log(item)
     
     useEffect(() => {
       
       setCategoryProd(productsFilterByCategory); 
       
       if (text) {
-        const titleProd = products.filter(
+        const titleProduct = products.filter(
           (el) => el.title.toLowerCase() === text.toLowerCase()
-          ); 
-  
-        setCategoryProd(titleProd);
+        );
+        console.log("Productos filtrados:", titleProduct);
+        setCategoryProd(titleProduct);
       }
     }, [text, item]); 
 
@@ -38,24 +41,19 @@ const Products = ({ category, route, navigation}) => {
     
   return (
     <SafeAreaView>
-        <Header title= {item} />
-        <Pressable onPress={() => navigation.goBack() }>
-          <AntDesign name="caretleft" size={24} color="black" style={styles.atras} />
-        </Pressable>
+        <Header title= {item} navigation={navigation} />
+
         <Search text={text} setText={setText}/>
+        
         <FlatList
           data={categoryProd}
           keyExtractor={products.id}
-          renderItem={({item}) => <ProductItem navigation={navigation} item={item} />}
+          renderItem={({item}) => (
+            <ProductItem navigation={navigation} item={item} />
+          )}
         />
     </SafeAreaView>
-  )
-}
+  );
+};
 
-const styles = StyleSheet.create({
-  atras: {
-    marginLeft: "2",
-  }
-})
-
-export default Products
+export default Products;

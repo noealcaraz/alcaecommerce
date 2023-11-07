@@ -9,6 +9,6 @@ export const store = configureStore({
         [ecApi.reducerPath]: ecApi.reducer,
         authSlice,    
     },
-    middleware: (getDefaultMiddware) => 
-    getDefaultMiddware().concat(ecApi.middleware),
+    middleware: (getDefaultMiddleware) => 
+    getDefaultMiddleware().concat(ecApi.middleware),
 });

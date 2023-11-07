@@ -1,21 +1,31 @@
-import { View, Text, Image, StyleSheet, Pressable, ActivityIndicator } from 'react-native'
-import React from 'react'
+import { View, Text, Image, StyleSheet, Pressable, ActivityIndicator, ScrollView, Alert } from 'react-native'
+import React, { useState } from 'react'
 import Header from '../components/Header'
-import { useState } from 'react';
+
 import { Entypo } from "@expo/vector-icons";
-import { colors } from '../theme/colors';
+import { MaterialIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
+
 import * as ImagePicker from 'expo-image-picker';
+import { colors } from '../theme/colors';
+
+
 import { usePutImageMutation } from '../services/ecApi';
 import { useGetImageQuery } from '../services/ecApi';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useDispatch } from 'react-redux';
+import { clearUser } from '../redux/slice/authSlice';
 
-const Profile = () => {
+
+const Profile = ({ navigation }) => {
   // const [image, setImage] = useState(null);
 
   const [ putImage, result ] = usePutImageMutation();
   const { data, isLoading, error, isError, refetch } = useGetImageQuery();
- 
+  const dispatch = useDispatch();
+
+
   const defaultImage = "https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Image.png"
 
   const pickImage = async () => {
@@ -27,8 +37,6 @@ const Profile = () => {
       quality: 1,
       base64: true, 
     });
-
-    console.log(result);
 
     if (!result.canceled) {
       await putImage({
@@ -60,9 +68,30 @@ const Profile = () => {
     }
   };
 
+  const handleLogout = async () => {
+    try {
+      dispatch(clearUser());
+      await AsyncStorage.removeItem("userEmail");
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const alertLogout = () =>
+    Alert.alert('Cerrar sesion', '¿Está seguro que desea cerrar sesion?', [
+      {
+        text: 'No',
+        style: 'cancel',
+      },
+      {text: 'Si', onPress: () => handleLogout()},
+    ]);
+
+
   return (
-    <View>
+    <ScrollView>
       <Header title= "Mi perfil" />
+      
       <View style={{ alignItems: "center", marginTop: 15 }}>
         {isLoading ? (
           <View style={{
@@ -74,7 +103,7 @@ const Profile = () => {
             <ActivityIndicator
               style={{ flex: 1 }}
               size="large"
-              color="#0000ff"
+              color="#6568A8"
             />
           </View> 
           ) : (
@@ -92,7 +121,7 @@ const Profile = () => {
             style={styles.iconCont}
             onPress={() => openCamera()}
           >
-            <Entypo name="camera" size={24} color="black"  />
+            <Entypo name="camera" size={34} color="#6568A8"  />
           </Pressable>
           <Text style={styles.textButton}>Tomar foto</Text>
         </View>
@@ -103,20 +132,32 @@ const Profile = () => {
             style={styles.iconCont}
             onPress={() => pickImage()}
           >
-            <AntDesign name="picture" size={24} color="black" />
+            <AntDesign name="picture" size={34} color="#6568A8" />
           </Pressable>
           <Text style={styles.textButton}>Explorar galería</Text>
         </View>
       </View>
-    </View>
+      <View style={{ marginLeft: 50 }}>
+        <View style={styles.buttonCont}>
+          <Pressable 
+            style={styles.iconCont}
+            onPress={alertLogout}
+          >
+            <MaterialIcons name="logout" size={34} color="#6568A8" />
+          </Pressable>
+          <Text style={styles.textButton}>Cerrar sesión</Text>
+        </View>
+      </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   imagen: {
-    width: 200, 
-    height: 200,
-    borderRadius: 30,
+    width: 250, 
+    height: 250,
+    borderRadius: 150,
+    marginTop: 30,
   },
   buttonCont: {
     marginVertical: 20,
@@ -128,11 +169,15 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 2,
     borderColor: colors.mediumColor,
+    marginTop: 20,
   },
   textButton: {
+    marginTop: 20,
     marginLeft: 15,
-    fontFamily: "Montserrat",
-    fontSize: 20,
+    fontFamily: "Cantarell",
+    fontWeight: "900",
+    fontSize: 30,
+    color: colors.mediumColor,
   }
 })
 

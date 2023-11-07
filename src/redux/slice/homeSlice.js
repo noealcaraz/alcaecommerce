@@ -9,17 +9,17 @@ const homeSlice = createSlice({
     initialState: {
         allCategories: categorias,
         allProducts: products,
-        categoryPressed: "",
+        categorySelected: "",
         productsFilterByCategory: [],
         productSelected: {},
     },
     
     reducers: {
         setCategory: (state, action) => {
-            state.categoryPressed = action.payload;
+            state.categorySelected = action.payload;
 
             state.productsFilterByCategory = state.allProducts.filter(
-                (el) => el.category === state.categoryPressed
+                (el) => el.category === state.categorySelected
             );
         },
 

@@ -1,45 +1,43 @@
-import { View, Text, Image, StyleSheet, Button, SafeAreaView, Pressable } from 'react-native'
+import { View, Text, Image, StyleSheet, SafeAreaView, Pressable } from 'react-native'
 import React from 'react'
-import { products } from '../data/products'
+
 import Header from '../components/Header';
-import { AntDesign } from '@expo/vector-icons';
 
-const ProductDetail = ({ navigation }) => {
+import { useSelector } from 'react-redux';
 
-    console.log(products[0]);
+const ProductDetail = ({ navigation, route }) => {
 
-    const initialProd = products[0];
+    const productSelected = useSelector(
+      (state) => state.homeSlice.productSelected
+    ); 
 
   return (
     <SafeAreaView>
-      <Header title = "Detalle"/>
-      <Pressable onPress={() => navigation.goBack() }>
-        <AntDesign name="caretleft" size={24} color="black" />
-      </Pressable>
+      <Header title = "Detalle" navigation={navigation} />
+      
       <View style = {styles.containerImage}>
-      <Image 
-      style = {styles.image}
-      source={{
-        uri: initialProd.images[2],
-      }}
-      />
-        <Text style={styles.title}> {initialProd.title} </Text>
-        <Text style={styles.description}> {initialProd.description} </Text>
-        <Text style={styles.precio}> Precio: ${initialProd.price} </Text>
-      </View>
-      <View style={styles.comprar}>
-      <Button
-        title = "Comprar"
-        style={styles.comprarText}
-        onPress={() => console.log("funciona")}
-      />
-      </View>
+        <Image 
+          style = {styles.image}
+          source={{
+          uri: productSelected.images[0],
+        }}
+        />
+        <View 
+          style={{flexDirection: "row", alignItems: "center"}}
+        >
+          <Text style={styles.title}> {productSelected.title} </Text>
+        </View>
+        <Text style={styles.precio}> ${productSelected.price} </Text>
+        <Text style={styles.description}> {productSelected.description} </Text>
+        <Text style={styles.description}> Rating: {productSelected.rating} </Text>
+        </View>
     </SafeAreaView>
   )
 }
 
 const styles = StyleSheet.create({
     image: {
+        marginTop: 30,
         height: 350,
         width: 350,
     },
@@ -50,28 +48,23 @@ const styles = StyleSheet.create({
 
     title: {
         fontSize: 30,
-        fontFamily: "Montserrat"
+        fontFamily: "Cantarell",
+        fontWeight: "900",
+        marginTop: 25,
     },
 
     description: {
         fontSize: 20,
-        marginVertical: 15,
+        marginTop: 12,
+        marginBottom: 30,
+        marginHorizontal: 10,
     },
 
     precio: {
-      fontSize: 26,
+      fontSize: 28,
       padding: 20,
+      fontFamily: "Montserrat",
     },
+});
 
-    comprar: {
-      width: "50%",
-      fontSize: 20,
-      marginLeft: 110,
-      color: "green",
-    },
-
-   
-
-})
-
-export default ProductDetail
+export default ProductDetail;

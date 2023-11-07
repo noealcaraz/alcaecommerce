@@ -1,9 +1,10 @@
-import { View, Text, TextInput, TouchableOpacity, Pressable, StyleSheet } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, Pressable, StyleSheet, Image } from 'react-native'
 import React from 'react'
 import { colors } from '../theme/colors'
 import { useState } from 'react'
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { firebase_auth } from '../firebase/firebase_auth';
+import eatpet from "../../assets/eatpet.png";
 
 const Register = ({ navigation }) => {
     const [email, setEmail] = useState("");
@@ -21,13 +22,14 @@ const Register = ({ navigation }) => {
 
             navigation.navigate("login");
         } catch (e) {
-            console.log("Error en registo", e);
+            console.log("Error de registo", e);
         }
     }; 
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Registrate para acceder</Text>
+      <Image source={eatpet} style={styles.logo} />
+      <Text style={styles.title}>Completa tu email y elegí tu contraseña</Text>
       <TextInput 
         placeholder='Escriba su email aquí'
         style={styles.input}
@@ -45,10 +47,9 @@ const Register = ({ navigation }) => {
       <TouchableOpacity style={styles.button} onPress={() => handleRegister()}>
         <Text style ={styles.buttonText}>Registrarse</Text>
       </TouchableOpacity>
+      <Text style={styles.registroText}>Ya tienes cuenta?</Text>
       <Pressable onPress={() => navigation.navigate("login")}>
-        <Text style={styles.registroText}>
-            Ya tienes cuenta? Iniciar Sesion
-        </Text>
+          <Text style={styles.sesion}>Inicia Sesión</Text>
       </Pressable>
     </View>
   );
@@ -60,15 +61,20 @@ const styles = StyleSheet.create({
       justifyContent: "center",
       alignItems: "center",
     },
+    logo: {
+      width: 250, 
+      height: 250, 
+      marginBottom: 20,
+    },
     title: {
       fontSize: 24,
       marginBottom: 20,
-      fontWeight: "bold",
+      color: colors.heavyColor,
     },
     input: {
       width: "85%",
       height: 50,
-      borderColor: colors.pink,
+      borderColor: colors.mediumColor,
       borderWidth: 2,
       borderRadius: 5,
       marginBottom: 20,
@@ -85,12 +91,19 @@ const styles = StyleSheet.create({
       color: "white",
       fontSize: 20,
       fontWeight: "600",
+      color: colors.lightColor,
     },
     registroText: {
       marginTop: 30,
       fontSize: 18,
-      color: colors.heavyBlue,
+      color: colors.heavyColor,
     },
+    sesion: {
+      marginTop: 0.5,
+      fontSize: 25,
+      fontWeight: "800",
+      color: colors.mediumColor,
+    }
   });
 
 export default Register
